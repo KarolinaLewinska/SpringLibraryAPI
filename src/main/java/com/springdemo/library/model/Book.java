@@ -1,17 +1,31 @@
 package com.springdemo.library.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class Book {
     private UUID id;
+
+    @NotBlank
     private String title;
+    @NotBlank
     private String author;
+    @NotBlank
     private String publisher;
+    @NotBlank
     private LocalDate yearOfRelease;
+    @NotBlank
     private Boolean isAvailable;
 
-    public Book(UUID id, String title, String author, String publisher, LocalDate yearOfRelease, Boolean isAvailable) {
+    public Book(@JsonProperty("id") UUID id,
+                @JsonProperty("title")String title,
+                @JsonProperty("author") String author,
+                @JsonProperty("publisher") String publisher,
+                @JsonProperty("yearOfRelease") LocalDate yearOfRelease,
+                @JsonProperty("isAvailable") Boolean isAvailable) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -40,7 +54,7 @@ public class Book {
         return yearOfRelease;
     }
 
-    public Boolean getAvailable() {
+    public Boolean getIsAvailable() {
         return isAvailable;
     }
 }
