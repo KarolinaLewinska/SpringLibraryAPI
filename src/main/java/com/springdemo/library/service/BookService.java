@@ -15,7 +15,7 @@ public class BookService {
     private final BookDao bookDao;
 
     @Autowired
-    public BookService(@Qualifier("bookDao") BookDao bookDao) {
+    public BookService(@Qualifier("InMemory") BookDao bookDao) {
         this.bookDao = bookDao;
     }
 

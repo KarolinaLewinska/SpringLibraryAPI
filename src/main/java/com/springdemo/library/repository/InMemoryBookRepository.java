@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("bookDao")
-public class BookRepository implements BookDao {
+@Repository("InMemory")
+public class InMemoryBookRepository implements BookDao {
     private static List<Book> booksDb = new ArrayList<>();
 
     @Override
@@ -50,8 +50,6 @@ public class BookRepository implements BookDao {
     @Override
     public void deleteBookById(UUID id) {
         Optional<Book> bookToDelete = getBookById(id);
-        if (bookToDelete.isPresent()) {
-            booksDb.remove(bookToDelete.get());
-        }
+        bookToDelete.ifPresent(book -> booksDb.remove(book));
     }
 }

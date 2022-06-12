@@ -14,8 +14,8 @@ public interface BookDao {
         UUID id = UUID.randomUUID();
         return insertBook(id, book);
     }
-    Book insertBook(UUID id, Book book);
 
-    void deleteBookById(UUID id);
+    Book insertBook(UUID id, Book book);
     Optional<Book> updateBookById(UUID id, Book book);
+    void deleteBookById(UUID id);
 }
